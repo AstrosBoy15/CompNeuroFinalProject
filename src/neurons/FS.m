@@ -1,4 +1,4 @@
-classdef FS
+classdef FS < Neuron
     properties
         C_M = 0.5
         V_K = -90
@@ -23,7 +23,6 @@ classdef FS
        
         electrical_connections
         chemical_connections
-
     end
 
     methods

@@ -1,3 +1,6 @@
+addpath ../neurons;
+addpath ../odes;
+
 tspan = [0, 200]; 
 i_ext=0.5;
 

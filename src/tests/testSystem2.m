@@ -1,10 +1,13 @@
-tspan = [0, 400]; 
+addpath ../neurons;
+addpath ../odes;
+
+tspan = [0, 500]; 
 i_ext=0.5;
 
 U0 = [];
 neurons = FS.empty;
 
-neurons(end+1) = FS(0, i_ext, 1);
+neurons(end+1) = FS(0, 0.35, 1);
 U0 = horzcat(U0, neurons(1).ics);
 
 neurons(end+1) = FS(1, i_ext, 6);
