@@ -10,6 +10,6 @@ classdef (Abstract) Neuron < matlab.mixin.Heterogeneous
 
     methods (Abstract)
         numDiffEqs = getNumDiffEqs(obj)
-        dUdt = getDiffEqs(obj, U, neurons, electrical_properties, chemical_properties)
+        dUdt = getDiffEqs(obj, t, U, neurons, electrical_properties, chemical_properties)
     end
 end

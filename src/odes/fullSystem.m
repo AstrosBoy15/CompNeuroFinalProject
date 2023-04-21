@@ -14,7 +14,7 @@ function dUdt = fullSystem(t, U, neurons)
             receptors(end+1) = U(presyn_neuron.V_index+getNumDiffEqs(presyn_neuron)-1);
         end
 
-        dWdt = getDiffEqs(neuron, U(i:i+getNumDiffEqs(neuron)-1), neurons, voltages, receptors);
+        dWdt = getDiffEqs(neuron, t, U(i:i+getNumDiffEqs(neuron)-1), neurons, voltages, receptors);
         i = i + getNumDiffEqs(neuron);
         for dx = dWdt
             dUdt(end+1) = dx;

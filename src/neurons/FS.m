@@ -46,12 +46,14 @@ classdef FS < Neuron
             end
         end
 
-        function dUdt = getDiffEqs(obj, U, neurons, electrical_properties, ...
+        function dUdt = getDiffEqs(obj, t, U, neurons, electrical_properties, ...
                 chemical_properties)
             V = U(1);
             n = U(2);
             m = U(3);
             h = U(4);
+
+            I = obj.I_inj(t);
 
             a_n = (V-obj.V_T-15)*-0.032/(exp(-(V-obj.V_T-15)/5)-1);
             a_m = (V-obj.V_T-13)*-0.32/(exp(-(V-obj.V_T-13)/4)-1);
@@ -60,7 +62,7 @@ classdef FS < Neuron
             b_m = 0.28*(V-obj.V_T-40)/(exp((V-obj.V_T-40)/5)-1);
             b_h = 4/(exp(-(V-obj.V_T-40)/5)+1);
 
-            dUdt(1) = 1/obj.C_M * (obj.I_inj - obj.g_K*n^4*(V-obj.V_K) - ...
+            dUdt(1) = 1/obj.C_M * (I - obj.g_K*n^4*(V-obj.V_K) - ...
                 obj.g_Na*m^3*h*(V-obj.V_Na)  - obj.g_L*(V-obj.V_L));
             dUdt(2) = a_n*(1-n) - b_n*n;
             dUdt(3) = a_m*(1-m) - b_m*m;
